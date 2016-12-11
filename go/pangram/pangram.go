@@ -21,9 +21,5 @@ func IsPangram(s string) bool {
 			a[v] = true
 		}
 	}
-	if len(a) == 26 {
-		return true
-	}
-	return false
-
+	return len(a) == 26
 }
