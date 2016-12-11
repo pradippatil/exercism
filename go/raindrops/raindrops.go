@@ -1,28 +1,30 @@
 package raindrops
 
-import "strconv"
+import (
+	"strconv"
+	"strings"
+)
 
 const testVersion = 2
 
 func Convert(n int) string {
-	var output string
 
-	isPling := n % 3
-	isPlang := n % 5
-	isPlong := n % 7
+	// slice to append output, which is Joined later
+	var output []string
 
-	if isPling == 0 {
-		output += "Pling"
+	if n%3 == 0 {
+		output = append(output, "Pling")
 	}
-	if isPlang == 0 {
-		output += "Plang"
+	if n%5 == 0 {
+		output = append(output, "Plang")
 	}
-	if isPlong == 0 {
-		output += "Plong"
+	if n%7 == 0 {
+		output = append(output, "Plong")
 	}
-	if output == "" {
-		output = strconv.Itoa(n)
+	if len(output) == 0 {
+		output = append(output, strconv.Itoa(n))
 	}
 
-	return output
+	// strings.Join is faster than +=
+	return strings.Join(output, "")
 }
